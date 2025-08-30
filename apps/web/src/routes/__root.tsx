@@ -1,4 +1,4 @@
-import Header from "@/components/header";
+import { HeroHeader } from "@/components/header";
 import Loader from "@/components/loader";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
@@ -10,6 +10,8 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import "../index.css";
+import { useEffect } from "react";
+import Lenis from 'lenis';
 
 export interface RouterAppContext {}
 
@@ -18,11 +20,11 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
 	head: () => ({
 		meta: [
 			{
-				title: "unilogic-landing",
+				title: "unilogic | Public Sector Technology Solutions",
 			},
 			{
 				name: "description",
-				content: "unilogic-landing is a web application",
+				content: "At unilogic, we empower South Africa's public sector with technology that drives efficiency and transparency.",
 			},
 		],
 		links: [
@@ -39,6 +41,36 @@ function RootComponent() {
 		select: (s) => s.isLoading,
 	});
 
+	// Initialize Lenis smooth scrolling
+	useEffect(() => {
+		const lenis = new Lenis({
+			duration: 1.2,
+			easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+			direction: 'vertical',
+			gestureDirection: 'vertical',
+			smooth: true,
+			mouseMultiplier: 1,
+			smoothTouch: false,
+			touchMultiplier: 2,
+			infinite: false,
+		});
+
+		function raf(time: number) {
+			lenis.raf(time);
+			requestAnimationFrame(raf);
+		}
+
+		requestAnimationFrame(raf);
+
+		// Make lenis globally accessible
+		(window as any).lenis = lenis;
+
+		return () => {
+			(window as any).lenis = null;
+			lenis.destroy();
+		};
+	}, []);
+
 	return (
 		<>
 			<HeadContent />
@@ -49,7 +81,7 @@ function RootComponent() {
 				storageKey="vite-ui-theme"
 			>
 				<div className="grid grid-rows-[auto_1fr] h-svh">
-					<Header />
+					<HeroHeader />
 					{isFetching ? <Loader /> : <Outlet />}
 				</div>
 				<Toaster richColors />

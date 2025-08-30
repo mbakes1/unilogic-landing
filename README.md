@@ -1,13 +1,13 @@
-# unilogic-landing
+# unilogic - Public Sector Technology Solutions
 
-This project was created with [Better-T-Stack](https://github.com/AmanVarshney01/create-better-t-stack), a modern TypeScript stack that combines React, TanStack Router, and more.
+unilogic is South Africa's premier technology consulting firm, exclusively serving the public sector. We specialize in delivering transformative IT, IoT, and digital marketing solutions that drive efficiency, transparency, and citizen engagement across government departments and public institutions.
 
-## Features
+## Our Focus
 
-- **TypeScript** - For type safety and improved developer experience
-- **TanStack Router** - File-based routing with full type safety
-- **TailwindCSS** - Utility-first CSS for rapid UI development
-- **shadcn/ui** - Reusable UI components
+- **Public Sector Exclusive** - We work exclusively with South African government entities
+- **IT Infrastructure & Systems** - Secure, scalable solutions for modern government operations
+- **IoT & Smart Solutions** - Connected systems for enhanced public service delivery
+- **Digital Marketing & Citizen Engagement** - Data-driven strategies that improve communication and community interaction
 
 ## Getting Started
 
@@ -17,7 +17,6 @@ First, install the dependencies:
 npm install
 ```
 
-
 Then, run the development server:
 
 ```bash
@@ -25,10 +24,6 @@ npm run dev
 ```
 
 Open [http://localhost:3001](http://localhost:3001) in your browser to see the web application.
-
-
-
-
 
 ## Project Structure
 
