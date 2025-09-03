@@ -102,7 +102,7 @@ export default function HeroSection() {
                                     preset="fade-in-blur"
                                     speedSegment={0.3}
                                     as="h1"
-                                    className="mt-8 text-balance text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem]">
+                                    className="mt-8 text-balance text-4xl md:text-6xl lg:mt-16 xl:text-7xl">
                                     Engineering South Africa's Digital Future
                                 </TextEffect>
                                 <TextEffect
@@ -167,17 +167,10 @@ export default function HeroSection() {
                                 },
                                 ...transitionVariants,
                             }}>
-                            <div className="relative -mr-56 mt-8 overflow-hidden px-2 sm:mr-0 sm:mt-12 md:mt-16">
+                            <div className="relative mt-8 overflow-hidden px-2 sm:mt-12 md:mt-16">
                                 <div className="inset-shadow-2xs ring-background dark:inset-shadow-white/20 bg-background relative mx-auto max-w-6xl overflow-hidden rounded-2xl">
                                     <img
-                                        className="bg-background aspect-15/8 relative hidden rounded-2xl dark:block"
-                                        src="/herrroo.jpg"
-                                        alt="South African public sector digital transformation"
-                                        width="2700"
-                                        height="1440"
-                                    />
-                                    <img
-                                        className="z-2 aspect-15/8 relative rounded-2xl dark:hidden"
+                                        className="z-2 aspect-15/8 relative rounded-2xl"
                                         src="/herrroo.jpg"
                                         alt="South African public sector digital transformation"
                                         width="2700"

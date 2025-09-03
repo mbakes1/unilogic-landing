@@ -13,11 +13,11 @@ export default function StatsSection() {
                         <p>We work exclusively with government departments, municipalities, and public institutions throughout South Africa, delivering measurable impact through technology.</p>
                         <div className="mb-12 mt-12 grid grid-cols-2 gap-2 md:mb-0">
                             <div className="space-y-4">
-                                <div className="bg-linear-to-r from-zinc-950 to-zinc-600 bg-clip-text text-5xl font-bold text-transparent dark:from-white dark:to-zinc-800">50+</div>
+                                <div className="bg-linear-to-r from-zinc-950 to-zinc-600 bg-clip-text text-5xl font-bold text-transparent">50+</div>
                                 <p>Government Partnerships</p>
                             </div>
                             <div className="space-y-4">
-                                <div className="bg-linear-to-r from-zinc-950 to-zinc-600 bg-clip-text text-5xl font-bold text-transparent dark:from-white dark:to-zinc-800">300+</div>
+                                <div className="bg-linear-to-r from-zinc-950 to-zinc-600 bg-clip-text text-5xl font-bold text-transparent">300+</div>
                                 <p>Digital Services Deployed</p>
                             </div>
                         </div>

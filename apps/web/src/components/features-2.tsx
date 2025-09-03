@@ -10,7 +10,7 @@ export default function Features() {
                     <h2 className="text-balance text-4xl font-semibold lg:text-5xl">Transformative Solutions for South Africa's Public Sector</h2>
                     <p className="mt-4">We design and implement technology solutions exclusively for government departments and public institutions.</p>
                 </div>
-                <div className="@min-4xl:max-w-full @min-4xl:grid-cols-3 mx-auto mt-8 grid max-w-sm gap-6 [--color-background:var(--color-muted)] [--color-card:var(--color-muted)] *:text-center md:mt-16 dark:[--color-muted:var(--color-zinc-900)]">
+                <div className="@min-4xl:max-w-full @min-4xl:grid-cols-3 mx-auto mt-8 grid max-w-sm gap-6 [--color-background:var(--color-muted)] [--color-card:var(--color-muted)] *:text-center md:mt-16">
                     <Card className="group border-0 shadow-none">
                         <CardHeader className="pb-3">
                             <CardDecorator>
@@ -54,7 +54,7 @@ export default function Features() {
                                 />
                             </CardDecorator>
 
-                            <h3 className="mt-6 font-medium">Digital Marketing & Citizen Engagement</h3>
+                            <h3 className="mt-6 font-medium">Digital Marketing</h3>
                         </CardHeader>
 
                         <CardContent>
@@ -68,7 +68,7 @@ export default function Features() {
 }
 
 const CardDecorator = ({ children }: { children: ReactNode }) => (
-    <div className="relative mx-auto size-36 duration-200 [--color-border:color-mix(in_oklab,var(--color-zinc-950)10%,transparent)] group-hover:[--color-border:color-mix(in_oklab,var(--color-zinc-950)20%,transparent)] dark:[--color-border:color-mix(in_oklab,var(--color-white)15%,transparent)] dark:group-hover:bg-white/5 dark:group-hover:[--color-border:color-mix(in_oklab,var(--color-white)20%,transparent)]">
+    <div className="relative mx-auto size-36 duration-200 [--color-border:color-mix(in_oklab,var(--color-zinc-950)10%,transparent)] group-hover:[--color-border:color-mix(in_oklab,var(--color-zinc-950)20%,transparent)]">
         <div
             aria-hidden
             className="absolute inset-0 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:24px_24px]"
@@ -77,6 +77,6 @@ const CardDecorator = ({ children }: { children: ReactNode }) => (
             aria-hidden
             className="bg-radial to-background absolute inset-0 from-transparent to-75%"
         />
-        <div className="dark:bg-background absolute inset-0 m-auto flex size-12 items-center justify-center border-l border-t bg-white">{children}</div>
+        <div className="absolute inset-0 m-auto flex size-12 items-center justify-center border-l border-t bg-white">{children}</div>
     </div>
 )
