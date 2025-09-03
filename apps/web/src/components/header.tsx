@@ -105,7 +105,7 @@ export const HeroHeader = () => {
                                 <ContactFormModal
                                     trigger={
                                         <Button
-                                            variant="outline"
+                                            variant="default"
                                             size="sm"
                                             className={cn(isScrolled && 'lg:hidden')}>
                                             <span>Contact</span>
