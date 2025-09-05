@@ -39,6 +39,13 @@ export default async function handler(
         return res.status(500).json({ message: 'Server configuration error: DATABASE_URL not set' });
       }
 
+      // Check if the DATABASE_URL has the correct format
+      if (DATABASE_URL.startsWith("psql '")) {
+        console.error('DATABASE_URL has incorrect format. It should not start with "psql \'".');
+        console.error('Current value:', DATABASE_URL);
+        return res.status(500).json({ message: 'Server configuration error: Invalid DATABASE_URL format' });
+      }
+
       // Log the connection attempt (without exposing sensitive data)
       console.log('Attempting to connect to database...');
       
@@ -91,7 +98,7 @@ export default async function handler(
         }
         
         // Check for connection errors
-        if (error.message.includes('connect') || error.message.includes('database')) {
+        if (error.message.includes('connect') || error.message.includes('database') || error.message.includes('SSL') || error.message.includes('authentication')) {
           return res.status(500).json({ message: 'Database connection error' });
         }
       }

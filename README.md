@@ -28,6 +28,8 @@ For the contact form to work with Neon DB, you need to set the following environ
 The DATABASE_URL should be in the format:
 `postgresql://username:password@host.region.aws.neon.tech/database_name?sslmode=require`
 
+**Important**: The DATABASE_URL should NOT start with `psql '` or have any quotes around it. It should be a direct PostgreSQL connection string.
+
 ## API Routes
 
 The contact form submits to `/api/contact` which is handled by the serverless function in `apps/web/api/contact.ts`.
@@ -60,4 +62,4 @@ This application is designed to be deployed on Vercel.
 - **Build Command**: `npm run build`
 - **Output Directory**: `dist`
 
-Make sure to also set the environment variables in your Vercel project settings.
+Make sure to also set the environment variables in your Vercel project settings, especially the DATABASE_URL with the correct format (no `psql '` prefix).
