@@ -30,7 +30,7 @@ The DATABASE_URL should be in the format:
 
 ## API Routes
 
-The contact form submits to `/api/contact` which is handled by the serverless function in `api/contact.ts`.
+The contact form submits to `/api/contact` which is handled by the serverless function in `apps/web/api/contact.ts`.
 
 ## Development
 
@@ -54,3 +54,5 @@ npx ts-node test-db-connection.ts
 ## Deployment
 
 This application is designed to be deployed on Vercel. Make sure to set the environment variables in your Vercel project settings.
+
+The project uses a monorepo structure with the web application in `apps/web`. The Vercel configuration specifies this as the root directory.

@@ -1,4 +1,8 @@
 {
+  "github": {
+    "silent": true
+  },
+  "rootDirectory": "apps/web",
   "rewrites": [
     {
       "source": "/api/(.*)",

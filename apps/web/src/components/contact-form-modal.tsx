@@ -43,12 +43,8 @@ export function ContactFormModal({ trigger }: ContactFormProps) {
     }
 
     try {
-      // Determine the API endpoint based on environment
-      const apiUrl = typeof window !== 'undefined' && window.location.hostname === 'localhost' 
-        ? 'http://localhost:3000/api/contact' 
-        : '/api/contact';
-      
-      const response = await fetch(apiUrl, {
+      // Since we're now using rootDirectory in vercel.json, the API endpoint is relative to the web app
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
