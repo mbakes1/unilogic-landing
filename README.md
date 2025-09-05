@@ -1,41 +1,56 @@
-# unilogic - Public Sector Technology Solutions
+# Unilogic Landing Page
 
-unilogic is South Africa's premier technology consulting firm, exclusively serving the public sector. We specialize in delivering transformative IT, IoT, and digital marketing solutions that drive efficiency, transparency, and citizen engagement across government departments and public institutions.
+This is the landing page for Unilogic, a digital transformation company for South Africa's public sector.
 
-## Our Focus
+## Setup
 
-- **Public Sector Exclusive** - We work exclusively with South African government entities
-- **IT Infrastructure & Systems** - Secure, scalable solutions for modern government operations
-- **IoT & Smart Solutions** - Connected systems for enhanced public service delivery
-- **Digital Marketing & Citizen Engagement** - Data-driven strategies that improve communication and community interaction
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-## Getting Started
+2. Copy the `.env.example` file to `.env.local` and add your environment variables:
+   ```bash
+   cp apps/web/.env.example apps/web/.env.local
+   ```
 
-First, install the dependencies:
+3. For local development:
+   ```bash
+   npm run dev:web
+   ```
 
+## Environment Variables
+
+For the contact form to work with Neon DB, you need to set the following environment variables in your Vercel project settings:
+
+- `DATABASE_URL`: The connection string for your Neon DB instance
+
+The DATABASE_URL should be in the format:
+`postgresql://username:password@host.region.aws.neon.tech/database_name?sslmode=require`
+
+## API Routes
+
+The contact form submits to `/api/contact` which is handled by the serverless function in `api/contact.ts`.
+
+## Development
+
+To run the web application locally:
 ```bash
-npm install
+npm run dev:web
 ```
 
-Then, run the development server:
-
+To run all workspaces:
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3001](http://localhost:3001) in your browser to see the web application.
+## Testing Database Connection
 
-## Project Structure
-
-```
-unilogic-landing/
-├── apps/
-│   ├── web/         # Frontend application (React + TanStack Router)
+To test the database connection locally, create a `.env` file in the root directory with your DATABASE_URL and run:
+```bash
+npx ts-node test-db-connection.ts
 ```
 
-## Available Scripts
+## Deployment
 
-- `npm run dev`: Start all applications in development mode
-- `npm run build`: Build all applications
-- `npm run dev:web`: Start only the web application
-- `npm run check-types`: Check TypeScript types across all apps
+This application is designed to be deployed on Vercel. Make sure to set the environment variables in your Vercel project settings.

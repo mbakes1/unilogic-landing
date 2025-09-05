@@ -11,6 +11,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import { toast } from "sonner";
 import confetti from 'confetti-js';
 
 interface ContactFormProps {
@@ -24,57 +25,98 @@ export function ContactFormModal({ trigger }: ContactFormProps) {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
+
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    // Validate that we have all required fields
+    if (!data.firstName || !data.lastName || !data.email || !data.department || !data.message) {
+      toast.error("Form submission failed", {
+        description: "Please fill in all required fields.",
+      });
       setIsSubmitting(false);
-      setIsSubmitted(true);
+      return;
+    }
+
+    try {
+      // Determine the API endpoint based on environment
+      const apiUrl = typeof window !== 'undefined' && window.location.hostname === 'localhost' 
+        ? 'http://localhost:3000/api/contact' 
+        : '/api/contact';
       
-      // Trigger confetti from the button position
-      if (buttonRef.current && canvasRef.current) {
-        const rect = buttonRef.current.getBoundingClientRect();
-        const x = rect.left + rect.width / 2;
-        const y = rect.top + rect.height / 2;
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        toast.success("Message Sent!", {
+          description: "We've received your message and will contact you soon.",
+        });
+        setIsSubmitted(true);
+        // Trigger confetti from the button position
+        if (buttonRef.current && canvasRef.current) {
+          const rect = buttonRef.current.getBoundingClientRect();
+          const x = rect.left + rect.width / 2;
+          const y = rect.top + rect.height / 2;
+          
+          // Set canvas dimensions
+          const canvas = canvasRef.current;
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+          
+          const confettiSettings = {
+            target: 'confetti-canvas',
+            max: 150,
+            size: 1,
+            animate: true,
+            props: ['circle', 'square'],
+            colors: [[0, 0, 0], [255, 255, 255]], // Black and white
+            clock: 25,
+            rotate: true,
+            start_from_edge: false,
+            respawn: false,
+            x,
+            y,
+          };
+          
+          // Clear any existing confetti
+          const confettiInstance = new confetti.Confetti('confetti-canvas', confettiSettings);
+          confettiInstance.render();
+          
+          // Stop confetti after 3 seconds
+          setTimeout(() => {
+            confettiInstance.clear();
+          }, 3000);
+        }
         
-        // Set canvas dimensions
-        const canvas = canvasRef.current;
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        
-        const confettiSettings = {
-          target: 'confetti-canvas',
-          max: 150,
-          size: 1,
-          animate: true,
-          props: ['circle', 'square'],
-          colors: [[0, 0, 0], [255, 255, 255]], // Black and white
-          clock: 25,
-          rotate: true,
-          start_from_edge: false,
-          respawn: false,
-          x,
-          y,
-        };
-        
-        // Clear any existing confetti
-        const confettiInstance = new confetti.Confetti('confetti-canvas', confettiSettings);
-        confettiInstance.render();
-        
-        // Stop confetti after 3 seconds
+        // Reset form and close modal after 3 seconds
         setTimeout(() => {
-          confettiInstance.clear();
+          setIsSubmitted(false);
+          setIsOpen(false);
         }, 3000);
+      } else {
+        const errorData = await response.json();
+        toast.error("Form submission failed", {
+          description: errorData.message || "Please try again later.",
+        });
+        console.error('Form submission failed:', errorData);
       }
-      
-      // Reset form and close modal after 3 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setIsOpen(false);
-      }, 3000);
-    }, 1500);
+    } catch (error) {
+      toast.error("An error occurred", {
+        description: "Please try again later.",
+      });
+      console.error('An error occurred during form submission', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Reset form when modal closes
@@ -115,28 +157,29 @@ export function ContactFormModal({ trigger }: ContactFormProps) {
               <div className="grid grid-cols-2 gap-4">
                 <div className="grid gap-2">
                   <Label htmlFor="firstName">First Name</Label>
-                  <Input id="firstName" placeholder="John" required />
+                  <Input id="firstName" name="firstName" placeholder="John" required />
                 </div>
                 <div className="grid gap-2">
                   <Label htmlFor="lastName">Last Name</Label>
-                  <Input id="lastName" placeholder="Doe" required />
+                  <Input id="lastName" name="lastName" placeholder="Doe" required />
                 </div>
               </div>
               
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="john.doe@department.gov.za" required />
+                <Input id="email" name="email" type="email" placeholder="john.doe@department.gov.za" required />
               </div>
               
               <div className="grid gap-2">
                 <Label htmlFor="department">Department/Organization</Label>
-                <Input id="department" placeholder="Department of..." required />
+                <Input id="department" name="department" placeholder="Department of..." required />
               </div>
               
               <div className="grid gap-2">
                 <Label htmlFor="message">How can we help?</Label>
                 <textarea
                   id="message"
+                  name="message"
                   placeholder="Tell us about your project or requirements..."
                   className="border-input flex min-h-[80px] w-full rounded-md border bg-transparent px-3 py-2 text-sm shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"
                   required

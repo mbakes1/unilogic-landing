@@ -86,7 +86,7 @@ export default function PublicSectorPartners() {
                             gap={112}>
                             {logos.map((logo, index) => (
                                 <div className="flex" key={index}>
-                                    <img src={`/logos/${logo}`} alt={logo} className="h-12 w-auto object-contain" />
+                                    <img src={`/logos/${logo}`} alt={`Logo of ${logo.split('.')[0].replace(/_/g, ' ')}, a Unilogic partner`} className="h-12 w-auto object-contain" />
                                 </div>
                             ))}
                         </InfiniteSlider>

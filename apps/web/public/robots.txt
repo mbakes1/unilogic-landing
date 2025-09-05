@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://unilogic.co.za/sitemap.xml
