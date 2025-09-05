@@ -35,13 +35,8 @@ if (fs.existsSync(vercelConfig)) {
   try {
     const config = JSON.parse(fs.readFileSync(vercelConfig, 'utf8'));
     
-    if (config.rootDirectory === 'apps/web') {
-      console.log('   ✓ PASS: rootDirectory is correctly set to apps/web');
-    } else {
-      console.log('   ✗ FAIL: rootDirectory is not set to apps/web');
-      console.log('   Expected: apps/web');
-      console.log('   Actual:', config.rootDirectory);
-    }
+    // Note: rootDirectory should be set in Vercel project settings, not in vercel.json
+    console.log('   ✓ INFO: rootDirectory should be set to "apps/web" in Vercel project settings');
     
     if (config.rewrites && config.rewrites.length > 0) {
       console.log('   ✓ PASS: rewrites are configured');
@@ -57,3 +52,4 @@ if (fs.existsSync(vercelConfig)) {
 
 console.log('\n=== Summary ===');
 console.log('All checks completed. If all tests passed, your API structure should be correct for Vercel deployment.');
+console.log('Remember to set the Root Directory to "apps/web" in your Vercel project settings.');

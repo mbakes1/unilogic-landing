@@ -53,6 +53,11 @@ npx ts-node test-db-connection.ts
 
 ## Deployment
 
-This application is designed to be deployed on Vercel. Make sure to set the environment variables in your Vercel project settings.
+This application is designed to be deployed on Vercel. 
 
-The project uses a monorepo structure with the web application in `apps/web`. The Vercel configuration specifies this as the root directory.
+**Important**: When setting up the project on Vercel, you must configure the following settings in your project settings:
+- **Root Directory**: Set this to `apps/web` 
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`
+
+Make sure to also set the environment variables in your Vercel project settings.
