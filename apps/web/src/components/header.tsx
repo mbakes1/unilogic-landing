@@ -48,7 +48,7 @@ export const HeroHeader = () => {
                 data-state={menuState && 'active'}
                 className="fixed z-20 w-full px-2">
                 <div className={cn('mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12', isScrolled && 'bg-background/50 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5')}>
-                    <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
+                    <div className="relative flex flex-wrap items-center justify-between gap-4 py-3 sm:gap-6 lg:gap-0 lg:py-4">
                         <div className="flex w-full justify-between lg:w-auto">
                             <Link
                                 to="/"
@@ -57,22 +57,22 @@ export const HeroHeader = () => {
                                 <img 
                                     src="/logoicon.png" 
                                     alt="unilogic" 
-                                    className="h-8 w-auto"
+                                    className="h-6 w-auto sm:h-8"
                                 />
-                                <span className="text-md font-regular">Unilogic</span>
+                                <span className="text-sm sm:text-md font-regular">Unilogic</span>
                             </Link>
 
                             <button
                                 onClick={() => setMenuState(!menuState)}
                                 aria-label={menuState == true ? 'Close Menu' : 'Open Menu'}
-                                className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden">
-                                <Menu className="in-data-[state=active]:rotate-180 in-data-[state=active]:scale-0 in-data-[state=active]:opacity-0 m-auto size-6 duration-200" />
-                                <X className="in-data-[state=active]:rotate-0 in-data-[state=active]:scale-100 in-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200" />
+                                className="relative z-20 -m-2 block cursor-pointer p-2 lg:hidden">
+                                <Menu className="in-data-[state=active]:rotate-180 in-data-[state=active]:scale-0 in-data-[state=active]:opacity-0 m-auto size-5 sm:size-6 duration-200" />
+                                <X className="in-data-[state=active]:rotate-0 in-data-[state=active]:scale-100 in-data-[state=active]:opacity-100 absolute inset-0 m-auto size-5 sm:size-6 -rotate-180 scale-0 opacity-0 duration-200" />
                             </button>
                         </div>
 
                         <div className="absolute inset-0 m-auto hidden size-fit lg:block">
-                            <ul className="flex gap-8 text-sm">
+                            <ul className="flex gap-4 sm:gap-8 text-sm">
                                 {menuItems.map((item, index) => (
                                     <li key={index}>
                                         <Link
@@ -86,28 +86,28 @@ export const HeroHeader = () => {
                             </ul>
                         </div>
 
-                        <div className="bg-background in-data-[state=active]:block lg:in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none">
-                            <div className="lg:hidden">
-                                <ul className="space-y-6 text-base">
+                        <div className="bg-background in-data-[state=active]:block lg:in-data-[state=active]:flex mt-2 mb-4 sm:mt-0 sm:mb-6 hidden w-full flex-wrap items-center justify-end space-y-6 rounded-3xl border p-4 sm:p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-4 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none">
+                            <div className="lg:hidden w-full">
+                                <ul className="space-y-6 text-base w-full">
                                     {menuItems.map((item, index) => (
-                                        <li key={index}>
+                                        <li key={index} className="w-full">
                                             <Link
                                                 to={item.to}
                                                 onClick={(e) => handleNavClick(e, item.to)}
-                                                className="text-muted-foreground hover:text-accent-foreground block duration-150">
+                                                className="text-muted-foreground hover:text-accent-foreground block duration-150 w-full py-2 border-b border-gray-100 last:border-0">
                                                 <span>{item.name}</span>
                                             </Link>
                                         </li>
                                     ))}
                                 </ul>
                             </div>
-                            <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
+                            <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-2 sm:space-y-0 md:gap-3 md:w-fit">
                                 <ContactFormModal
                                     trigger={
                                         <Button
                                             variant="default"
                                             size="sm"
-                                            className={cn(isScrolled && 'lg:hidden')}>
+                                            className={cn("w-full sm:w-auto text-xs sm:text-sm", isScrolled && 'lg:hidden')}>
                                             <span>Contact</span>
                                         </Button>
                                     }
@@ -116,7 +116,7 @@ export const HeroHeader = () => {
                                     trigger={
                                         <Button
                                             size="sm"
-                                            className={cn(isScrolled ? 'lg:inline-flex' : 'hidden')}>
+                                            className={cn("w-full sm:w-auto text-xs sm:text-sm", isScrolled ? 'lg:inline-flex' : 'hidden')}>
                                             <span>Partner With Us</span>
                                         </Button>
                                     }

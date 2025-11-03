@@ -34,6 +34,11 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
 				rel: "icon",
 				href: "/favicon.ico",
 			},
+			{
+				rel: "preload",
+				href: "/herrroo.jpg",
+				as: "image"
+			}
 		],
 		scripts: [
 			{
@@ -136,7 +141,7 @@ function RootComponent() {
 				disableTransitionOnChange
 				storageKey="vite-ui-theme"
 			>
-				<div className="grid grid-rows-[auto_1fr] h-svh">
+				<div className="grid grid-rows-[auto_1fr] min-h-screen">
 					<HeroHeader />
 					{isFetching ? <Loader /> : <Outlet />}
 				</div>
