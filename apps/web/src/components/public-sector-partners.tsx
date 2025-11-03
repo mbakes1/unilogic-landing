@@ -77,7 +77,7 @@ export default function PublicSectorPartners() {
             <div className="group relative m-auto max-w-7xl px-6">
                 <div className="flex flex-col items-center md:flex-row">
                     <div className="md:max-w-44 md:border-r md:pr-6">
-                        <p className="text-end text-sm">Trusted by South Africa's Public Sector</p>
+                        <p className="text-end text-sm">Building Partnerships Across South Africa's Public Sector</p>
                     </div>
                     <div className="relative py-6 md:w-[calc(100%-11rem)]">
                         <InfiniteSlider
@@ -86,7 +86,7 @@ export default function PublicSectorPartners() {
                             gap={112}>
                             {logos.map((logo, index) => (
                                 <div className="flex" key={index}>
-                                    <img src={`/logos/${logo}`} alt={`Logo of ${logo.split('.')[0].replace(/_/g, ' ')}, a Unilogic partner`} className="h-12 w-auto object-contain" />
+                                    <img src={`/logos/${logo}`} alt={`Logo of ${logo.split('.')[0].replace(/_/g, ' ')}, potential Unilogic partner`} className="h-12 w-auto object-contain" />
                                 </div>
                             ))}
                         </InfiniteSlider>

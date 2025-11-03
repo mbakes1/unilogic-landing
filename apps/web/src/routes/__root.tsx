@@ -22,7 +22,7 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
 		meta: [
 			{
 				name: "description",
-				content: "Unilogic specializes in digital transformation for the South African public sector. We provide innovative technology solutions, including IT infrastructure, IoT, and digital marketing, to enhance efficiency, transparency, and citizen engagement.",
+				content: "Unilogic is a dynamic new player in digital transformation for the South African public sector. We bring fresh perspectives and cutting-edge technology solutions, including IT infrastructure, IoT, and digital marketing, to enhance efficiency, transparency, and citizen engagement.",
 			},
 			{
 				name: "keywords",
@@ -61,7 +61,7 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
 						{
 							"@type": "Service",
 							"serviceType": "IT Infrastructure & Systems",
-							"description": "Secure, scalable infrastructure that modernizes government operations while meeting public sector compliance requirements.",
+							"description": "Secure, scalable infrastructure that modernizes government operations while meeting public sector compliance requirements. As an emerging company, we bring fresh approaches to traditional challenges.",
 							"provider": {
 								"@type": "Organization",
 								"name": "Unilogic"
@@ -70,7 +70,7 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
 						{
 							"@type": "Service",
 							"serviceType": "IoT & Smart Solutions",
-							"description": "Our IoT solutions bring intelligence to infrastructure — enabling smarter cities, safer communities, and more efficient services.",
+							"description": "Our innovative IoT solutions bring intelligence to infrastructure — enabling smarter cities, safer communities, and more efficient services through fresh perspectives.",
 							"provider": {
 								"@type": "Organization",
 								"name": "Unilogic"
@@ -79,7 +79,7 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
 						{
 							"@type": "Service",
 							"serviceType": "Digital Marketing",
-							"description": "Data-driven strategies that improve communication between government and citizens, increasing awareness and engagement.",
+							"description": "Data-driven strategies that improve communication between government and citizens, increasing awareness and engagement. We bring new approaches to public sector communication challenges.",
 							"provider": {
 								"@type": "Organization",
 								"name": "Unilogic"

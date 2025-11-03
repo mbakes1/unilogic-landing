@@ -112,7 +112,7 @@ export default function HeroSection() {
                                     delay={0.5}
                                     as="p"
                                     className="mx-auto mt-8 max-w-2xl text-balance text-lg">
-                                    At unilogic, we empower South Africa's public sector with technology that drives efficiency and transparency.
+                                    As a dynamic new player in public sector technology, we're bringing fresh perspectives and cutting-edge solutions to government challenges across South Africa.
                                 </TextEffect>
 
                                 <AnimatedGroup

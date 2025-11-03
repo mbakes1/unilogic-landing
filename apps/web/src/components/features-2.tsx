@@ -7,8 +7,8 @@ export default function Features() {
         <section id="solutions" className="py-16 md:py-32">
             <div className="@container mx-auto max-w-5xl px-6">
                 <div className="text-center">
-                    <h2 className="text-balance text-4xl font-semibold lg:text-5xl">Transformative Solutions for South Africa's Public Sector</h2>
-                    <p className="mt-4">We design and implement technology solutions exclusively for government departments and public institutions.</p>
+                    <h2 className="text-balance text-4xl font-semibold lg:text-5xl">Fresh Solutions for South Africa's Public Sector</h2>
+                    <p className="mt-4">As an emerging company, we design and implement cutting-edge technology solutions exclusively for government departments and public institutions with agility and innovation.</p>
                 </div>
                 <div className="@min-4xl:max-w-full @min-4xl:grid-cols-3 mx-auto mt-8 grid max-w-sm gap-6 [--color-background:var(--color-muted)] [--color-card:var(--color-muted)] *:text-center md:mt-16">
                     <Card className="group border-0 shadow-none">
@@ -24,7 +24,7 @@ export default function Features() {
                         </CardHeader>
 
                         <CardContent>
-                            <p className="text-sm">Secure, scalable infrastructure that modernizes government operations while meeting public sector compliance requirements.</p>
+                            <p className="text-sm">Secure, scalable infrastructure that modernizes government operations while meeting public sector compliance requirements. As a new player, we bring fresh approaches to traditional infrastructure challenges.</p>
                         </CardContent>
                     </Card>
 
@@ -41,7 +41,7 @@ export default function Features() {
                         </CardHeader>
 
                         <CardContent>
-                            <p className="mt-3 text-sm">Our IoT solutions bring intelligence to infrastructure — enabling smarter cities, safer communities, and more efficient services.</p>
+                            <p className="mt-3 text-sm">Our innovative IoT solutions bring intelligence to infrastructure — enabling smarter cities, safer communities, and more efficient services through fresh perspectives and modern approaches.</p>
                         </CardContent>
                     </Card>
 
@@ -58,7 +58,7 @@ export default function Features() {
                         </CardHeader>
 
                         <CardContent>
-                            <p className="mt-3 text-sm">Data-driven strategies that improve communication between government and citizens, increasing awareness and engagement.</p>
+                            <p className="mt-3 text-sm">Data-driven strategies that improve communication between government and citizens, increasing awareness and engagement. We bring new approaches to public sector communication challenges.</p>
                         </CardContent>
                     </Card>
                 </div>

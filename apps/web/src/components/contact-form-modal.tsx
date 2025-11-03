@@ -152,9 +152,9 @@ export function ContactFormModal({ trigger }: ContactFormProps) {
         </DialogTrigger>
         <DialogContent className="sm:max-w-[500px]">
           <DialogHeader>
-            <DialogTitle>Partner with unilogic</DialogTitle>
+            <DialogTitle>Partner with Unilogic</DialogTitle>
             <DialogDescription>
-              Fill out the form below and our team will get back to you shortly.
+              Connect with South Africa's emerging leader in public sector technology. Fill out the form below and our team will get back to you shortly.
             </DialogDescription>
           </DialogHeader>
           
