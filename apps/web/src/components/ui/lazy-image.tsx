@@ -7,6 +7,7 @@ interface LazyImageProps {
   width?: number;
   height?: number;
   placeholder?: string;
+  style?: React.CSSProperties;
 }
 
 const LazyImage: React.FC<LazyImageProps> = ({ 
@@ -15,7 +16,8 @@ const LazyImage: React.FC<LazyImageProps> = ({
   className = '', 
   width, 
   height,
-  placeholder 
+  placeholder,
+  style
 }) => {
   const [imageSrc, setImageSrc] = useState(placeholder || src);
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -41,11 +43,11 @@ const LazyImage: React.FC<LazyImageProps> = ({
       style={{ 
         maxWidth: '100%', 
         height: 'auto',
-        display: 'block'
+        display: 'block',
+        ...style
       }}
     />
   );
-  </new_string>
 };
 
 export default LazyImage;

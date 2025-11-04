@@ -147,7 +147,7 @@ export default function HeroSection() {
                                         size="lg"
                                         variant="ghost"
                                         className="h-10.5 rounded-xl px-5 w-full sm:w-auto">
-                                        <Link to="#solutions">
+                                        <Link to="/" hash="#solutions">
                                             <span>Explore Solutions</span>
                                         </Link>
                                     </Button>
