@@ -29,13 +29,16 @@ export const HeroHeader = () => {
             const targetId = to.slice(1);
             const targetElement = document.getElementById(targetId);
             if (targetElement) {
-                // Use Lenis smooth scrolling
+                // Use Lenis smooth scrolling if available, otherwise use native
                 const lenis = (window as any).lenis;
                 if (lenis) {
                     lenis.scrollTo(targetElement);
                 } else {
-                    // Fallback to default smooth scrolling
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                    // Fallback to native smooth scrolling
+                    targetElement.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
                 setMenuState(false);
             }
@@ -47,7 +50,7 @@ export const HeroHeader = () => {
             <nav
                 data-state={menuState && 'active'}
                 className="fixed z-20 w-full px-2">
-                <div className={cn('mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12', isScrolled && 'bg-background/50 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5')}>
+                <div className={cn('mx-auto mt-2 w-full px-4 sm:px-6 transition-all duration-300 max-w-[95%] sm:max-w-[90%] md:max-w-5xl lg:max-w-6xl lg:px-12', isScrolled && 'bg-background/50 max-w-[95%] sm:max-w-[90%] md:max-w-5xl lg:max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5')}>
                     <div className="relative flex flex-wrap items-center justify-between gap-4 py-3 sm:gap-6 lg:gap-0 lg:py-4">
                         <div className="flex w-full justify-between lg:w-auto">
                             <Link

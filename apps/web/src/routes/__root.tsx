@@ -102,33 +102,62 @@ function RootComponent() {
 		select: (s) => s.isLoading,
 	});
 
-	// Initialize Lenis smooth scrolling
+	// Initialize Lenis smooth scrolling (only on larger screens to avoid mobile viewport issues)
 	useEffect(() => {
-		const lenis = new Lenis({
-			duration: 1.2,
-			easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-			direction: 'vertical',
-			gestureDirection: 'vertical',
-			smooth: true,
-			mouseMultiplier: 1,
-			smoothTouch: false,
-			touchMultiplier: 2,
-			infinite: false,
-		});
+		let lenis: any = null;
 
-		function raf(time: number) {
-			lenis.raf(time);
-			requestAnimationFrame(raf);
-		}
+		const initLenis = () => {
+			// Check if we're on a mobile device or small screen
+			const isMobile = window.innerWidth <= 768 || window.matchMedia('(max-width: 768px)').matches;
+			
+			// Clean up any existing instance
+			if ((window as any).lenis) {
+				(window as any).lenis.destroy();
+				(window as any).lenis = null;
+			}
+			
+			if (!isMobile) {
+				lenis = new Lenis({
+					duration: 1.2,
+					easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+					direction: 'vertical',
+					gestureDirection: 'vertical',
+					smooth: true,
+					mouseMultiplier: 1,
+					smoothTouch: false,
+					touchMultiplier: 2,
+					infinite: false,
+				});
 
-		requestAnimationFrame(raf);
+				function raf(time: number) {
+					lenis.raf(time);
+					requestAnimationFrame(raf);
+				}
 
-		// Make lenis globally accessible
-		(window as any).lenis = lenis;
+				requestAnimationFrame(raf);
 
+				// Make lenis globally accessible
+				(window as any).lenis = lenis;
+			}
+		};
+
+		// Initialize on load
+		initLenis();
+
+		// Handle resize events
+		const handleResize = () => {
+			initLenis();
+		};
+
+		window.addEventListener('resize', handleResize);
+
+		// Clean up
 		return () => {
+			window.removeEventListener('resize', handleResize);
+			if (lenis) {
+				lenis.destroy();
+			}
 			(window as any).lenis = null;
-			lenis.destroy();
 		};
 	}, []);
 
