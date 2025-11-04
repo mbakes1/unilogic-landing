@@ -11,7 +11,6 @@ import {
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import "../index.css";
 import { useEffect } from "react";
-import Lenis from 'lenis';
 
 export interface RouterAppContext {}
 
@@ -102,64 +101,7 @@ function RootComponent() {
 		select: (s) => s.isLoading,
 	});
 
-	// Initialize Lenis smooth scrolling (only on larger screens to avoid mobile viewport issues)
-	useEffect(() => {
-		let lenis: any = null;
 
-		const initLenis = () => {
-			// Check if we're on a mobile device or small screen
-			const isMobile = window.innerWidth <= 768 || window.matchMedia('(max-width: 768px)').matches;
-			
-			// Clean up any existing instance
-			if ((window as any).lenis) {
-				(window as any).lenis.destroy();
-				(window as any).lenis = null;
-			}
-			
-			if (!isMobile) {
-				lenis = new Lenis({
-					duration: 1.2,
-					easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-					direction: 'vertical',
-					gestureDirection: 'vertical',
-					smooth: true,
-					mouseMultiplier: 1,
-					smoothTouch: false,
-					touchMultiplier: 2,
-					infinite: false,
-				});
-
-				function raf(time: number) {
-					lenis.raf(time);
-					requestAnimationFrame(raf);
-				}
-
-				requestAnimationFrame(raf);
-
-				// Make lenis globally accessible
-				(window as any).lenis = lenis;
-			}
-		};
-
-		// Initialize on load
-		initLenis();
-
-		// Handle resize events
-		const handleResize = () => {
-			initLenis();
-		};
-
-		window.addEventListener('resize', handleResize);
-
-		// Clean up
-		return () => {
-			window.removeEventListener('resize', handleResize);
-			if (lenis) {
-				lenis.destroy();
-			}
-			(window as any).lenis = null;
-		};
-	}, []);
 
 	return (
 		<>

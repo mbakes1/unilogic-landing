@@ -29,17 +29,11 @@ export const HeroHeader = () => {
             const targetId = to.slice(1);
             const targetElement = document.getElementById(targetId);
             if (targetElement) {
-                // Use Lenis smooth scrolling if available, otherwise use native
-                const lenis = (window as any).lenis;
-                if (lenis) {
-                    lenis.scrollTo(targetElement);
-                } else {
-                    // Fallback to native smooth scrolling
-                    targetElement.scrollIntoView({ 
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                // Use native smooth scrolling
+                targetElement.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
                 setMenuState(false);
             }
         }
