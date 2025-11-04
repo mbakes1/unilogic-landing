@@ -81,23 +81,25 @@ export default function PublicSectorPartners() {
                     <div className="w-full text-center mb-4 sm:mb-6">
                         <p className="text-sm sm:text-base">Building Partnerships Across South Africa's Public Sector</p>
                     </div>
-                    <div className="w-full relative py-4">
-                        <InfiniteSlider
-                            speedOnHover={20}
-                            speed={40}
-                            gap={80}>
-                            {logos.map((logo, index) => (
-                                <div className="flex justify-center" key={index}>
-                                    <LazyImage 
-                                        src={`/logos/${logo}`} 
-                                        alt={`Logo of ${logo.split('.')[0].replace(/_/g, ' ')}, potential Unilogic partner`} 
-                                        className="h-8 w-auto object-contain sm:h-10 md:h-12"
-                                        width={40}
-                                        height={40}
-                                    />
-                                </div>
-                            ))}
-                        </InfiniteSlider>
+                    <div className="w-full relative py-4 overflow-hidden max-w-full">
+                        <div className="w-full overflow-x-hidden">
+                            <InfiniteSlider
+                                speedOnHover={20}
+                                speed={40}
+                                gap={40}>
+                                {logos.map((logo, index) => (
+                                    <div className="flex justify-center" key={index}>
+                                        <LazyImage 
+                                            src={`/logos/${logo}`} 
+                                            alt={`Logo of ${logo.split('.')[0].replace(/_/g, ' ')}, potential Unilogic partner`} 
+                                            className="h-8 w-auto object-contain max-w-full"
+                                            width={40}
+                                            height={40}
+                                        />
+                                    </div>
+                                ))}
+                            </InfiniteSlider>
+                        </div>
 
                         <div className="bg-linear-to-r from-background absolute inset-y-0 left-0 w-10 sm:w-16 md:w-20"></div>
                         <div className="bg-linear-to-l from-background absolute inset-y-0 right-0 w-10 sm:w-16 md:w-20"></div>

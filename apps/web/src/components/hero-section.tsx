@@ -36,9 +36,9 @@ export default function HeroSection() {
                 <div
                     aria-hidden
                     className="absolute inset-0 isolate hidden opacity-50 lg:block">
-                    <div className="w-[35rem] h-[80rem] -translate-y-[22rem] absolute left-0 top-0 -rotate-45 rounded-full bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,hsla(0,0%,85%,.08)_0,hsla(0,0%,55%,.02)_50%,hsla(0,0%,45%,0)_80%)] sm:w-[40rem] sm:h-[100rem] sm:-translate-y-[25rem]" />
-                    <div className="h-[80rem] absolute left-0 top-0 w-[15rem] -rotate-45 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.06)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)] [translate:5%_-50%] sm:w-[20rem] sm:h-[100rem]" />
-                    <div className="h-[80rem] -translate-y-[22rem] absolute left-0 top-0 w-[15rem] -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)] sm:w-[20rem] sm:h-[100rem] sm:-translate-y-[25rem]" />
+                    <div className="w-64 h-64 -translate-y-32 absolute left-0 top-0 -rotate-45 rounded-full bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,hsla(0,0%,85%,.08)_0,hsla(0,0%,55%,.02)_50%,hsla(0,0%,45%,0)_80%)] sm:w-80 sm:h-80 sm:-translate-y-40 md:w-[35rem] md:h-[80rem] md:-translate-y-[22rem]" />
+                    <div className="h-64 absolute left-0 top-0 w-40 -rotate-45 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.06)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)] [translate:5%_-50%] sm:w-52 sm:h-80 md:w-[15rem] md:h-[80rem]" />
+                    <div className="h-64 -translate-y-32 absolute left-0 top-0 w-40 -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)] sm:w-52 sm:h-80 sm:-translate-y-40 md:w-[15rem] md:h-[80rem] md:-translate-y-[22rem]" />
                 </div>
                 <section>
                     <div className="relative pt-16 md:pt-24">
@@ -69,11 +69,10 @@ export default function HeroSection() {
                             }}
                             className="absolute inset-0 -z-20">
                             <LazyImage
-                                src="/herrroo.jpg"
+                                src="https://images.unsplash.com/photo-1636706519609-988babca3dd5?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1200"
                                 alt="background"
-                                className="absolute inset-x-0 top-40 -z-20 hidden lg:top-24 dark:block"
-                                width={1920}
-                                height={1080}
+                                className="absolute inset-x-0 top-40 -z-20 hidden lg:top-24 dark:block w-full max-w-none"
+                                style={{ objectFit: 'cover', objectPosition: 'center' }}
                             />
                         </SimpleAnimatedGroup>
                         <div className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--color-background)_75%)]"></div>
@@ -169,13 +168,12 @@ export default function HeroSection() {
                                 ...transitionVariants,
                             }}>
                             <div className="relative mt-6 px-2 sm:mt-8 md:mt-12 lg:mt-16">
-                                <div className="bg-background relative mx-auto max-w-4xl overflow-hidden rounded-2xl sm:max-w-5xl lg:max-w-6xl">
+                                <div className="bg-background relative mx-auto max-w-[95%] sm:max-w-2xl md:max-w-3xl lg:max-w-4xl overflow-hidden rounded-2xl">
                                     <LazyImage
                                         className="z-2 aspect-[4/3] w-full object-cover sm:aspect-video"
-                                        src="/herrroo.jpg"
+                                        src="https://images.unsplash.com/photo-1636706519609-988babca3dd5?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1200"
                                         alt="South African public sector digital transformation"
-                                        width={1200}
-                                        height={675}
+                                        style={{ objectFit: 'cover', objectPosition: 'center' }}
                                     />
                                 </div>
                             </div>

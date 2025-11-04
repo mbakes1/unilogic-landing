@@ -38,8 +38,14 @@ const LazyImage: React.FC<LazyImageProps> = ({
       width={width}
       height={height}
       loading="lazy"
+      style={{ 
+        maxWidth: '100%', 
+        height: 'auto',
+        display: 'block'
+      }}
     />
   );
+  </new_string>
 };
 
 export default LazyImage;
