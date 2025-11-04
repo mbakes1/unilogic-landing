@@ -12,7 +12,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { toast } from "sonner";
-import ConfettiGenerator from 'confetti-js';
+import confetti from 'confetti-js';
 
 interface ContactFormProps {
   trigger: React.ReactNode;
@@ -24,7 +24,6 @@ export function ContactFormModal({ trigger }: ContactFormProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const confettiInstance = useRef<any>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -69,11 +68,6 @@ export function ContactFormModal({ trigger }: ContactFormProps) {
           canvas.width = window.innerWidth;
           canvas.height = window.innerHeight;
           
-          // Clear any existing confetti
-          if (confettiInstance.current) {
-            confettiInstance.current.clear();
-          }
-          
           const confettiSettings = {
             target: 'confetti-canvas',
             max: 150,
@@ -89,15 +83,13 @@ export function ContactFormModal({ trigger }: ContactFormProps) {
             y,
           };
           
-          // Create new confetti instance
-          confettiInstance.current = new ConfettiGenerator(confettiSettings);
-          confettiInstance.current.render();
+          // Clear any existing confetti
+          const confettiInstance = new confetti.Confetti('confetti-canvas', confettiSettings);
+          confettiInstance.render();
           
           // Stop confetti after 3 seconds
           setTimeout(() => {
-            if (confettiInstance.current) {
-              confettiInstance.current.clear();
-            }
+            confettiInstance.clear();
           }, 3000);
         }
         
@@ -127,22 +119,8 @@ export function ContactFormModal({ trigger }: ContactFormProps) {
   useEffect(() => {
     if (!isOpen) {
       setIsSubmitted(false);
-      // Clear confetti when modal closes
-      if (confettiInstance.current) {
-        confettiInstance.current.clear();
-        confettiInstance.current = null;
-      }
     }
   }, [isOpen]);
-
-  // Clean up confetti on unmount
-  useEffect(() => {
-    return () => {
-      if (confettiInstance.current) {
-        confettiInstance.current.clear();
-      }
-    };
-  }, []);
 
   return (
     <>
